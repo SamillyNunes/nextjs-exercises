@@ -26,30 +26,40 @@ export default function Lottery(){
                 
                 display: "flex",
                 flexDirection: "row",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                alignItems: "center"
             }} >
                 {sortedNumbers.map(n => (<LotteryNumberDisplay number={n} />))}
             </div>}
 
-            <button
-                style={{
-                    padding: "5px 200px",
-                    marginTop: "20px"
-                }}
-                onClick={generateNumbers}
-            >
-                Gerar!
-            </button>
+            <div style={{
+                display: "flex",
+                flexDirection:"row"
+            }} >
+                <input 
+                    onChange={e => setLengthNumbers(e.target.value)} 
+                    type="number"
+                    min={6}
+                    value={lengthNumbers}
+                    max={60}
+                    style={{
+                        padding: "5px",
+                        marginTop: "20px"
+                    }}
+                />
+                
+                <button
+                    style={{
+                        padding: "5px 200px",
+                        marginTop: "20px"
+                    }}
+                    onClick={generateNumbers}
+                >
+                    Gerar!
+                </button>
 
-            <input 
-                placeholder="Defina a quantidade de números que deseja gerar:" 
-                onChange={e => setLengthNumbers(e.target.value)} 
-                style={{
-                    padding: "5px",
-                    width:"400px",
-                    marginTop: "20px",
-
-                }}
-            />
+            </div>
         </div>
     );
 }
