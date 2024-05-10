@@ -2,12 +2,13 @@ import { useState } from "react";
 import LotteryNumberDisplay from "../../components/LotteryNumberDisplay";
 
 export default function Lottery(){
-    let [sortedNumbers, setSortedNumbers] = useState([]);
+    const [sortedNumbers, setSortedNumbers] = useState([]);
+    const [lengthNumbers, setLengthNumbers] = useState(6);
 
     function generateNumbers(){
         setSortedNumbers([]);
         let newNumbers = [];
-        for(let i=0; i<6; i++){
+        for(let i=0; i<lengthNumbers; i++){
             let n = Math.floor(Math.random()*61);
             newNumbers.push(n);
         }
@@ -41,6 +42,17 @@ export default function Lottery(){
             >
                 Gerar!
             </button>
+
+            <input 
+                placeholder="Defina a quantidade de números que deseja gerar:" 
+                onChange={e => setLengthNumbers(e.target.value)} 
+                style={{
+                    padding: "5px",
+                    width:"400px",
+                    marginTop: "20px",
+
+                }}
+            />
         </div>
     );
 }
