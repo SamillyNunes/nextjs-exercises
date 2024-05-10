@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LotteryNumberDisplay from "../../components/LotteryNumberDisplay";
+import { generateLottery } from "../../functions/generateLottery";
 
 export default function Lottery(){
     const [sortedNumbers, setSortedNumbers] = useState([]);
@@ -7,12 +8,8 @@ export default function Lottery(){
 
     function generateNumbers(){
         setSortedNumbers([]);
-        let newNumbers = [];
-        for(let i=0; i<lengthNumbers; i++){
-            let n = Math.floor(Math.random()*61);
-            newNumbers.push(n);
-        }
-        setSortedNumbers(newNumbers);
+        const numbers = generateLottery(lengthNumbers);
+        setSortedNumbers(numbers);
     }
 
     return (
